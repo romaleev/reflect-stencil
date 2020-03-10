@@ -1,0 +1,39 @@
+$reflect-input-color: #19197C;
+$reflect-input-background-color: #FFF;
+$reflect-input-border-color: lighten($reflect-input-color, 60%);
+$reflect-input-focus-color: #FD6400;
+$font: 1rem Arial, Helvetica, sans-serif;
+
+:host {
+  display: block;
+
+  input, textarea {
+    transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+    background: $reflect-input-background-color;
+    margin-bottom: 1rem;
+    border: 1px solid $reflect-input-border-color;
+    padding: 0.75rem;
+    color: $reflect-input-color;
+    font: $font;
+
+    &:invalid {
+      color: red;
+    }
+
+    &:focus {
+      box-shadow: 0 0 5px $reflect-input-focus-color;
+      border: 1px solid $reflect-input-focus-color;
+    }
+
+    &::placeholder {
+      color: lighten($reflect-input-color, 50%);
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
+}
