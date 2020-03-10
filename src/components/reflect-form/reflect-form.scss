@@ -1,0 +1,86 @@
+$reflect-form-main-color: #FD6400;
+$reflect-form-secondary-color: #FFF;
+$reflect-form-background-color: lighten(#19197C, 69%);
+$reflect-form-border-color: #CCC;
+$reflect-form-select-color: darken($reflect-form-main-color, 10%);
+$font: 1rem Arial, Helvetica, sans-serif;
+
+:host {
+  display: block;
+  form {
+    font: $font;
+    padding: 1rem;
+    background: $reflect-form-background-color;
+  }
+
+  h1 {
+    background: $reflect-form-main-color;
+    padding: 1.5rem 0;
+    font-size: 140%;
+    font-weight: 300;
+    text-align: center;
+    color: $reflect-form-secondary-color;
+    margin: -1rem -1rem 1rem -1rem;
+  }
+
+  button[type='submit'] {
+    font: $font;
+    box-sizing: border-box;
+    transition: all 0.30s ease-in-out;
+    width: 100%;
+    padding: 0.75rem;
+    background: $reflect-form-main-color;
+    border: 1px solid $reflect-form-border-color;
+    color: $reflect-form-secondary-color;
+
+    &:hover {
+      background: $reflect-form-select-color;
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px $reflect-form-select-color;
+      border: 1px solid $reflect-form-select-color;
+    }
+
+    &:disabled, &:disabled:hover {
+      cursor: default;
+      background-color: $reflect-form-border-color;
+    }
+  }
+
+  .animated {
+    animation: success-animation 1s;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+  @keyframes success-animation {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      -ms-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+    10%, 20% {
+      -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+      -ms-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%, 50%, 70%, 90% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+      -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+    40%, 60%, 80% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+      -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      -ms-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+}
