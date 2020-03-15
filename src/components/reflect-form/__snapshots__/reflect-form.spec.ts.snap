@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reflect-form builds and renders 1`] = `
+ReflectForm {
+  "onSubmit": Object {
+    "emit": [Function],
+  },
+  "valid": false,
+}
+`;

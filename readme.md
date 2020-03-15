@@ -29,7 +29,7 @@ npm install
 npm start
 ```
 
-To build the component for production, run:
+To build the components for tests and production, run:
 
 ```bash
 npm run build
