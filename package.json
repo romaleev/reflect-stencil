@@ -1,6 +1,6 @@
 {
-  "name": "rebobank-reflect-stencil",
-  "version": "0.0.1",
+  "name": "reflect-stencil",
+  "version": "1.0.0",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -9,7 +9,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/rebobank-reflect-stencil/rebobank-reflect-stencil.js",
+  "unpkg": "dist/reflect-stencil/reflect-stencil.js",
   "files": [
     "dist/",
     "loader/"
@@ -21,6 +21,10 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "postinstall": "npm run build"
+  },
+  "repository": {
+    "url": "git@github.com:romaleev/reflect-stencil.git",
+    "type": "git"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.8",

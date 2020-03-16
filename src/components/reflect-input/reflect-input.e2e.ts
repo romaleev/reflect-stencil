@@ -2,6 +2,7 @@ import { newE2EPage } from '@stencil/core/testing'
 
 const MockValidInput = { name: 'Roma', email: 'email@example.com' }
 const MockInvalidInput = { name: 'R1', email: 'email@examplecom' }
+const Red = 'rgb(255, 0, 0)'
 
 describe('reflect-input', () => {
   it('renders', async () => {
@@ -12,42 +13,36 @@ describe('reflect-input', () => {
     expect(element).toHaveClass('hydrated')
   });
 
-  it('renders valid fields', async () => {
+  it('renders Name field correctly', async () => {
     const page = await newE2EPage()
-
     await page.setContent('<reflect-input></reflect-input>')
-
     const inputName = await page.find('reflect-input >>> input[name="name"]')
-    const inputEmail = await page.find('reflect-input >>> input[name="email"]')
 
-    expect(inputName).not.toHaveClass(':invalid')
-    expect(inputEmail).not.toHaveClass(':invalid')
-
-    await inputName.setProperty('value', MockValidInput.name)
-    await inputEmail.setProperty('value', MockValidInput.email)
-
+    await inputName.type(MockValidInput.name)
     await page.waitForChanges()
 
-    // TODO why "await page.waitForChanges() must be called before reading element information"?
-    // expect(inputName).not.toHaveClass(':invalid')
-    // expect(inputEmail).not.toHaveClass(':invalid')
+    expect((await inputName.getComputedStyle()).color).not.toEqual(Red)
+
+    await inputName.type(MockInvalidInput.name)
+    await page.waitForChanges()
+
+    await page.waitFor(500) // wait for red color fade in
+    expect((await inputName.getComputedStyle()).color).toEqual(Red)
   })
 
-  it('renders invalid fields', async () => {
+  it('renders Email field correctly', async () => {
     const page = await newE2EPage()
-
     await page.setContent('<reflect-input></reflect-input>')
-
-    const inputName = await page.find('reflect-input >>> input[name="name"]')
     const inputEmail = await page.find('reflect-input >>> input[name="email"]')
 
-    await inputName.setProperty('value', MockInvalidInput.name)
-    await inputEmail.setProperty('value', MockInvalidInput.name)
-
+    await inputEmail.type(MockValidInput.email)
     await page.waitForChanges()
 
-    // TODO why "await page.waitForChanges() must be called before reading element information"?
-    // expect(inputName).toHaveClass(':invalid')
-    // expect(inputEmail).toHaveClass(':invalid')
+    expect((await inputEmail.getComputedStyle()).color).not.toEqual(Red)
+
+    await inputEmail.type(MockInvalidInput.email)
+    await page.waitFor(500) // wait for red color fade in
+
+    expect((await inputEmail.getComputedStyle()).color).toEqual(Red)
   })
 })

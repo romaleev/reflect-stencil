@@ -73,6 +73,5 @@ Most of the time I spent for learning how to develop with Stencil and related ch
 
 ### Challenges / Todo's
 
-- Investigate why globalStyles are not applied in `stencil.config.js` (used `index.html` incline styles instead)
-- Investigate `waitForChanges()` error in `reflect-input.e2e.ts`
-- Investigate why button is disabled in `reflect-form.e2e.ts`
+- Investigate why globalStyles are not applied in `stencil.config.js` (used `index.html` inline styles instead)
+- Investigate how to get node with Input invalid class: `expect(inputName).toHaveClass(':invalid')` in `reflect-input.e2e.ts`

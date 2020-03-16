@@ -11,26 +11,26 @@ describe('reflect-form', () => {
     expect(element).toHaveClass('hydrated')
   });
 
-  it('renders changes to the name data', async () => {
+  it('renders Submit button enabled/disabled state correctly', async () => {
     const page = await newE2EPage()
 
     await page.setContent('<reflect-form></reflect-form>')
 
-    const inputName = await page.find('reflect-form >>> reflect-input >>> input[name="name"]')
-    const inputEmail = await page.find('reflect-form >>> reflect-input >>> input[name="email"]')
-    const inputMessage = await page.find('reflect-form >>> reflect-input >>> input[name="message"]')
+    const input = await page.find('reflect-form >>> reflect-input')
     const buttonSubmit = await page.find('reflect-form >>> button')
 
     expect(await buttonSubmit.getProperty('disabled')).toBeTruthy()
 
-    await inputName.setProperty('value', MockValidInput.name)
-    await inputEmail.setProperty('value', MockValidInput.email)
-    await inputMessage.setProperty('value', MockValidInput.message)
+    await input.focus()
+    await page.keyboard.type(MockValidInput.name)
+    await page.keyboard.press('Tab')
+    await page.keyboard.type(MockValidInput.email)
+    await page.keyboard.press('Tab')
+    await page.keyboard.type(MockValidInput.message)
 
     await page.waitForChanges()
 
-    // TODO why button is still disabled?
-    // expect(await buttonSubmit.getProperty('disabled')).toBeFalsy()
+    expect(await buttonSubmit.getProperty('disabled')).toBeFalsy()
 
     await buttonSubmit.click()
 

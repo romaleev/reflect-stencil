@@ -2,7 +2,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
-  namespace: 'rebobank-reflect-stencil',
+  namespace: 'reflect-stencil',
   outputTargets: [
     {
       type: 'dist',
@@ -16,8 +16,13 @@ export const config: Config = {
       serviceWorker: null // disable service workers
     }
   ],
-  globalStyle: 'src/styles.css',
+  globalStyle: 'src/styles.scss',
   plugins: [
     sass()
-  ]
+  ],
+  /*testing: { // For test purposes
+    browserHeadless: false,
+    browserDevtools: true,
+    browserSlowMo: 1000
+  }*/
 };
